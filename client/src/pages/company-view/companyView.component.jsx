@@ -22,6 +22,7 @@ class CompanyView extends React.Component {
   };
 
   getCompanyDataSuccess = (res) => {
+    console.log(res);
     this.setState({ company: res });
   };
 
