@@ -5,7 +5,7 @@ class CompanyView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ticker: 'SBUX',
+      ticker: 'TSLA',
       company: {},
     };
   }
