@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Header = () => <div>header component to build yayeet</div>;
+const Header = () => <div>Hello user! Welcome Back.</div>;
 
 export default Header;
