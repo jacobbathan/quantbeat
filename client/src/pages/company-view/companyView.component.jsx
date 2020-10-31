@@ -10,6 +10,16 @@ class CompanyView extends React.Component {
     };
   }
 
+  handleChange = evt => {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
+
+  searchCompany = () => {
+    this.getCompanyData(this.state.ticker)
+  }
+
   componentDidMount = () => {
     this.getCompanyData(this.state.ticker);
   };
@@ -31,7 +41,11 @@ class CompanyView extends React.Component {
 
     return (
       <div>
-        <div>Data sheet for ${this.state.ticker}</div>
+        <div>
+          <input type="text" name="ticker" value={this.state.ticker} onChange={this.handleChange} />
+          <button type="button" onClick={this.searchCompany}>Search</button>
+        </div>
+    <div>Data sheet for {company.ticker}</div>
         <div>
           Address: {company.address}, {company.city}
         </div>
