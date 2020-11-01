@@ -5,8 +5,10 @@ class CompanyView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ticker: '',
+      ticker: 'FB',
       company: {},
+      news: [],
+      recommendation: {},
     };
   }
 
@@ -21,7 +23,9 @@ class CompanyView extends React.Component {
   };
 
   componentDidMount = () => {
+    this.getCompanyNews(this.state.ticker);
     this.getCompanyData(this.state.ticker);
+    this.getCompanyRec(this.state.ticker);
   };
 
   getCompanyData = (ticker) => {
@@ -34,6 +38,42 @@ class CompanyView extends React.Component {
   getCompanyDataSuccess = (res) => {
     console.log(res);
     this.setState({ company: res });
+  };
+
+  getCompanyDataError = (error) => {
+    console.log(error);
+  };
+
+  getCompanyNews = (ticker) => {
+    companyServices
+      .getCompanyNews(ticker)
+      .then(this.getCompanyNewsSuccess)
+      .catch(this.getCompanyNewsError);
+  };
+
+  getCompanyNewsSuccess = (res) => {
+    console.log(res);
+    // this.setState({ news: res });
+  };
+
+  getCompanyNewsError = (error) => {
+    console.log(error);
+  };
+
+  getCompanyRec = (ticker) => {
+    companyServices
+      .getRecomendationTrend(ticker)
+      .then(this.getCompanyRecSuccess)
+      .catch(this.getCompanyRecError);
+  };
+
+  getCompanyRecSuccess = (res) => {
+    console.log(res);
+    this.setState({ recommendation: res[0] });
+  };
+
+  getCompanyRecError = (error) => {
+    console.log(error);
   };
 
   render() {
