@@ -1,11 +1,14 @@
 import React from 'react';
+import FormInput from '../../components/form-input/form-input.component';
+import CustomButton from '../../components/custom-button/custom-button.component';
 import * as companyServices from '../../services/companies.services';
+import './companyView.styles.scss';
 
 class CompanyView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ticker: 'FB',
+      ticker: '',
       company: {},
       news: [],
       recommendation: {},
@@ -77,20 +80,21 @@ class CompanyView extends React.Component {
   };
 
   render() {
-    const { company } = this.state;
+    const { company, ticker } = this.state;
 
     return (
       <div>
-        <div>
-          <input
+        <div className="searchbar">
+          <FormInput
             type="text"
             name="ticker"
-            value={this.state.ticker}
+            value={ticker}
             onChange={this.handleChange}
+            label="Ticker (i.e. MSFT)"
           />
-          <button type="button" onClick={this.searchCompany}>
-            Search
-          </button>
+          <CustomButton type="button" onClick={this.searchCompany}>
+            SEARCH
+          </CustomButton>
         </div>
         {Object.keys(company).length === 0 ? (
           <div>
