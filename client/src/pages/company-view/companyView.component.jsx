@@ -1,6 +1,7 @@
 import React from 'react';
 import FormInput from '../../components/form-input/form-input.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
+import { Grid, Typography } from '@material-ui/core';
 import * as companyServices from '../../services/companies.services';
 import './companyView.styles.scss';
 
@@ -84,22 +85,28 @@ class CompanyView extends React.Component {
 
     return (
       <div>
-        <div className="searchbar">
-          <FormInput
-            type="text"
-            name="ticker"
-            value={ticker}
-            onChange={this.handleChange}
-            label="Ticker (i.e. MSFT)"
-          />
-          <CustomButton type="button" onClick={this.searchCompany}>
-            SEARCH
-          </CustomButton>
-        </div>
+        <Grid container>
+          <Grid item xs={4}>
+            <div className="searchbar">
+              <FormInput
+                type="text"
+                name="ticker"
+                value={ticker}
+                onChange={this.handleChange}
+                label="Ticker (i.e. MSFT)"
+              />
+            </div>
+          </Grid>
+          <Grid item xs={4} className="searchButton">
+            <CustomButton type="button" onClick={this.searchCompany}>
+              SEARCH
+            </CustomButton>
+          </Grid>
+        </Grid>
         {Object.keys(company).length === 0 ? (
-          <div>
+          <Typography variant="h5" className="noData">
             Please search for a valid company without the ticker symbol ($).
-          </div>
+          </Typography>
         ) : (
           <div>
             <div>Data sheet for ${company.ticker}</div>
