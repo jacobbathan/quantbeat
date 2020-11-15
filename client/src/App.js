@@ -6,6 +6,8 @@ import Header from './components/header/header.componet';
 import CompanyView from './pages/company-view/companyView.component';
 import NewsView from './pages/news/newsView.component';
 import Footer from './components/footer/footer.component';
+import IPO from './pages/ipo/ipo.component';
+import PageNotFound from './pages/page-not-found/page-not-found.component';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/company" component={CompanyView} />
         <Route exact path="/news" component={NewsView} />
+        <Route exact path="/ipo" component={IPO} />
+        <Route component={PageNotFound} />
       </Switch>
       <Footer />
     </div>

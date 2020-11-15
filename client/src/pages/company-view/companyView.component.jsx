@@ -80,6 +80,16 @@ class CompanyView extends React.Component {
     console.log(error);
   };
 
+  // Look behind function that will add commas to seperate divisions of thousands via Regex
+  numberWithCommas(x) {
+    // Async edge case so page will not break in case of large data loads
+    if (!x) {
+      return 'Loading...';
+    }
+
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+  }
+
   render() {
     const { company, ticker } = this.state;
 
@@ -104,26 +114,34 @@ class CompanyView extends React.Component {
           </Grid>
         </Grid>
         {Object.keys(company).length === 0 ? (
-          <Typography variant="h5" className="noData">
+          <Typography variant="h6" className="noData">
             Please search for a valid company without the ticker symbol ($).
           </Typography>
         ) : (
-          <div>
-            <div>Data sheet for ${company.ticker}</div>
-            <div>
+          <div className="companyContent">
+            <div className="dataSheet">DATA SHEET FOR ${company.ticker}</div>
+            <div className="img">
               {!company.logo ? (
-                'Image not found'
+                <div className="noImg">Image not found</div>
               ) : (
                 <img src={company.logo} alt="Company logo" />
               )}
             </div>
-            <div>
-              Address: {company.address}, {company.city}, {company.state}{' '}
+            <div className="companyName">{company.name}</div>
+            <div className="companyAddress">
+              {company.address}, {company.city}, {company.state}{' '}
               {company.country}
             </div>
-            <div>Description: {company.description}</div>
-            <div>Industry: {company.finnhubIndustry}</div>
-            <div>Total Employees: {company.employeeTotal}</div>
+            <a href={company.weburl} className="companyWeb">
+              {company.weburl}
+            </a>
+            <div className="companyDesc">{company.description}</div>
+            <div className="companyInd">
+              Industry: {company.finnhubIndustry}
+            </div>
+            <div className="companyEmployees">
+              Total Employees: {this.numberWithCommas(company.employeeTotal)}
+            </div>
           </div>
         )}
       </div>

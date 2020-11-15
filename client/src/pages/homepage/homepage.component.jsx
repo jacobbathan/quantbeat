@@ -8,13 +8,17 @@ import './homepage.styles.scss';
 const useStyles = makeStyles({
   header: {
     textAlign: 'center',
-    marginBottom: '5vh',
+    marginBottom: '2vh',
+    padding: '0vh 5vw',
   },
   bodyText: {
-    margin: '15vh auto',
+    margin: '5vh auto',
+    fontWeight: '100',
+    fontSize: '13pt',
+    width: '400px',
   },
   image: {
-    height: '400px',
+    height: '300px',
     width: 'auto',
     marginTop: '5vh',
   },

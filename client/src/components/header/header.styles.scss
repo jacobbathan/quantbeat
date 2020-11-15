@@ -28,6 +28,11 @@
     .option {
       padding: 10px 15px;
       cursor: pointer;
+      text-decoration: none;
+      color: black;
+      &:hover {
+        color: #31690e;
+      }
     }
   }
 }

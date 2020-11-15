@@ -1,0 +1,25 @@
+.img {
+  width: 300px;
+}
+
+.content {
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.message {
+  padding: 2vw;
+
+  .notfound {
+    font-size: 7vh;
+    font-weight: bold;
+    margin: 0px;
+    color: #31690e;
+  }
+
+  .uhoh {
+    font-size: 3vh;
+    padding-right: 10vw;
+    line-height: 1.5;
+  }
+}

@@ -18,6 +18,9 @@ const Header = () => (
       <Link className="option" to="/news">
         NEWS
       </Link>
+      <Link className="option" to="/ipo">
+        UPCOMING IPO
+      </Link>
     </div>
   </div>
 );
